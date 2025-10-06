@@ -1,0 +1,75 @@
+=================== Project Planning - ChieCouture E-Commerce Application ===================
+
+1. User Roles
+-------------
+- Buyer:
+  • Can register and log in to the system.
+  • Can browse all available products.
+  • Can add products to the shopping cart directly from product listings.
+  • Can update the quantity of items in their cart.
+  • Can remove products from the cart.
+  • Can proceed to checkout to place an order.
+  • Can leave reviews on purchased products.
+
+- Vendor:
+  • Can register and log in as a vendor.
+  • Can create and manage their store.
+  • Can add, edit, and delete products in their store.
+  • Can view product reviews from buyers.
+  • Can monitor orders for their products.
+
+- Admin (system-level role, optional):
+  • Can manage users (buyers and vendors).
+  • Can monitor orders and stores.
+  • Handles escalations or system-level issues.
+
+----------------------------------------------------
+
+2. Dashboard Layout
+-------------------
+- Buyer Dashboard:
+  • Shows user details and order history.
+  • Provides easy access to the shopping cart.
+  • Displays recent reviews or recommendations (optional).
+
+- Vendor Dashboard:
+  • Shows a summary of store details.
+  • Displays a list of products with edit/delete options.
+  • Includes a quick option to add new products.
+  • Shows reviews given by buyers on their products.
+  • Order summary (orders placed for their products).
+
+----------------------------------------------------
+
+3. Tools and Frameworks Used
+----------------------------
+- Programming Language: Python 3.13
+- Framework: Django 5.2.6
+- Database: SQLite (default for development)
+- Templates: Django Template Language (HTML + Bootstrap for styling)
+- Authentication: Django's built-in authentication system
+- Version Control: Git
+- Virtual Environment: venv
+- Additional Packages:
+  • Pillow (for image handling)
+  • Django email utilities (for password reset and notifications)
+
+----------------------------------------------------
+
+4. Security and Access Control
+------------------------------
+- User authentication handled by Django (passwords hashed securely).
+- CSRF protection enabled for all forms.
+- Vendors restricted to managing only their own products.
+- Buyers restricted to managing only their own carts and orders.
+- Password reset with secure tokens and email confirmation.
+
+----------------------------------------------------
+
+5. Failure and Recovery Planning
+--------------------------------
+- Invalid login: display error messages, prompt retry.
+- Adding unavailable product: system will display “Out of Stock” message.
+- System errors: show user-friendly error pages (404, 500).
+- Database backups considered for recovery.
+- Email sending failures logged for retry.

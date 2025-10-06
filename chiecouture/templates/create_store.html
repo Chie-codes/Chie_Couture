@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+  <h2 class="mb-4">Create Your Store</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="mb-3">
+        <!-- Render the label normally -->
+        {{ field.label_tag }}
+        
+        <!-- Render the input with the form-control class -->
+        {{ field }}
+        
+        <!-- Optional help text -->
+        {% if field.help_text %}
+          <div class="form-text">{{ field.help_text }}</div>
+        {% endif %}
+        
+        <!-- Display errors -->
+        {% for error in field.errors %}
+          <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Create Store</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4">Welcome to ChieCouture</h2>
+
+<div class="row">
+  {% for store in stores %}
+  <div class="col-md-4 mb-4">
+    <div class="card shadow-sm h-100">
+      {% if store.logo %}
+      <img src="{{ store.logo.url }}" class="card-img-top" alt="{{ store.name }}">
+      {% endif %}
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{ store.name }}</h5>
+        <p class="card-text">{{ store.description|truncatewords:20 }}</p>
+        <a href="{% url 'store_detail' store.id %}" class="btn btn-primary mt-auto">Visit Store</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>No stores available yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+  <h2>All Stores</h2>
+  <div class="row">
+    {% for store in stores %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          {% if store.logo %}
+            <img src="{{ store.logo.url }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ store.name }}</h5>
+            <p class="card-text">{{ store.description|truncatewords:20 }}</p>
+            <a href="{% url 'store_detail' store.id %}" class="btn btn-primary">View Store</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>No stores yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

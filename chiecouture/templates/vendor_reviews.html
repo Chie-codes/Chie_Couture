@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Reviews for {{ store.name }}</h1>
+
+{% if reviews %}
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>User</th>
+                <th>Rating</th>
+                <th>Comment</th>
+                <th>Verified</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td>{{ review.product.name }}</td>
+                <td>{{ review.user.username }}</td>
+                <td>{{ review.rating }}</td>
+                <td>{{ review.comment }}</td>
+                <td>{{ review.verified }}</td>
+                <td>{{ review.created_at|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No reviews yet for your products.</p>
+{% endif %}
+
+<a href="{% url 'store_dashboard' %}">Back to Dashboard</a>
+{% endblock %}

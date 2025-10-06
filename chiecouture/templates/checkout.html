@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+{% load math_filters %}
+
+{% block content %}
+<div class="container my-5">
+  <h2>Checkout</h2>
+  <p>Confirm your order below:</p>
+
+  <ul class="list-group mb-3">
+    {% for item in items %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ item.product.name }} (x{{ item.quantity }})
+        <span>£{{ item.product.price|mul:item.quantity|floatformat:2 }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <h4>Total: £{{ items|calc_total|floatformat:2 }}</h4>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary">Complete Order</button>
+  </form>
+</div>
+{% endblock %}

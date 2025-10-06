@@ -1,0 +1,89 @@
+/* General Body */
+body {
+    background-color: #fefcf3; /* Cream */
+    color: #002366; /* Royal Blue */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #002366 !important;
+}
+
+.navbar .nav-link {
+    color: #fefcf3 !important;
+    transition: color 0.3s;
+}
+
+.navbar .nav-link:hover {
+    color: #ffd700 !important; /* subtle gold hover */
+}
+
+/* Cards (products, store) */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #002366;
+    border-color: #002366;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #001944;
+}
+
+.btn-success {
+    background-color: #006400;
+    border-color: #006400;
+}
+
+.btn-success:hover {
+    background-color: #004d00;
+}
+
+/* Forms */
+input, textarea, select {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Tables */
+.table th, .table td {
+    vertical-align: middle;
+}
+
+/* Alerts */
+.alert {
+    border-radius: 5px;
+}
+
+/* Footer (if you add one later) */
+footer {
+    background-color: #002366;
+    color: #fefcf3;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Misc spacing */
+.mb-3, .mb-4, .mt-3, .mt-4, .my-5 {
+    margin-bottom: 1rem !important;
+    margin-top: 1rem !important;
+}
+
+/* Product Image */
+.card-img-top, .img-fluid {
+    border-radius: 10px;
+    object-fit: cover;
+}

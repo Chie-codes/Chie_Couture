@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-5">
+  <div class="d-flex align-items-center mb-4">
+    {% if store.logo %}
+      <img src="{{ store.logo.url }}" alt="{{ store.name }} Logo" style="height: 80px; width: 80px; object-fit: cover; border-radius: 8px;" class="me-3">
+    {% endif %}
+    <h2>{{ store.name }}</h2>
+  </div>
+  <p>{{ store.description }}</p>
+
+  <h4>Products</h4>
+  <div class="row">
+    {% for product in products %}
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" style="height: 200px; object-fit: cover;">
+          {% endif %}
+          <div class="card-body">
+            <h5>{{ product.name }}</h5>
+            <p>£{{ product.price|floatformat:2 }}</p>
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-primary">View Product</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p>No products in this store yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

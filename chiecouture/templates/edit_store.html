@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Store{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Edit Your Store</h2>
+    <form method="POST" enctype="multipart/form-data" class="mt-3">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        
+        <div class="mb-3">
+            <label for="{{ form.name.id_for_label }}" class="form-label">Store Name</label>
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+        
+        <div class="mb-3">
+            <label for="{{ form.description.id_for_label }}" class="form-label">Description</label>
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+
+        <div class="mb-3">
+            <label for="{{ form.logo.id_for_label }}" class="form-label">Logo</label>
+            {% if store.logo %}
+                <div class="mb-2">
+                    <img src="{{ store.logo.url }}" alt="Store Logo" style="max-height: 150px;">
+                </div>
+            {% endif %}
+            {{ form.logo }}
+            {{ form.logo.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Store</button>
+        <a href="{% url 'store_dashboard' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+
+    <form method="post" action="{% url 'store-delete' store.id %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">
+            Delete Store
+        </button>
+    </form>
+</div>
+{% endblock %}
